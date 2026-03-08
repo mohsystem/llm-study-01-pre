@@ -29,6 +29,9 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(nullable = false)
+    private boolean mfaEnabled;
+
     protected User() {
         // JPA constructor
     }
@@ -38,6 +41,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.createdAt = LocalDateTime.now();
+        this.mfaEnabled = false;
     }
 
     public Long getId() {
@@ -67,5 +71,13 @@ public class User {
 
     public void updatePassword(String password) {
         this.password = password;
+    }
+
+    public boolean isMfaEnabled() {
+        return mfaEnabled;
+    }
+
+    public void setMfaEnabled(boolean mfaEnabled) {
+        this.mfaEnabled = mfaEnabled;
     }
 }
